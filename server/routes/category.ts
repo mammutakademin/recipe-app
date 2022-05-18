@@ -1,21 +1,21 @@
 import express, {Request, Response} from 'express';
-import {getRecipes, getRecipesBySearch, getRecipeById} from "../db/recipeCrud";
+import {getCategories, getRecipesCategory, getRecipesBySearchCategory} from "../db/recipeCrud";
 
 const router = express.Router()
 
 router.get('/', async (req: Request, res: Response) => {
-    const returnRecipes = await getRecipes();
+    const returnCategories = await getCategories();
+    res.status(200).json(returnCategories);
+});
+
+router.get('/:category', async (req: Request, res: Response) => {
+    const queriedCategories = await getRecipesCategory(req.params.category);
+    res.status(200).json(queriedCategories);
+});
+
+router.get('/:categoryName/recipes', async (req: Request, res: Response) => {
+    const returnRecipes = await getRecipesBySearchCategory(req.params.categoryName);
     res.status(200).json(returnRecipes);
-});
-
-router.get('/search/:query', async (req: Request, res: Response) => {
-    const queriedRecipes = await getRecipesBySearch(req.params.query);
-    res.status(200).json(queriedRecipes);
-});
-
-router.get('/:recipeId', async (req: Request, res: Response) => {
-    const recipe = await getRecipeById(req.params.recipeId);
-    res.status(200).json(recipe);
 })
 
 export default router;

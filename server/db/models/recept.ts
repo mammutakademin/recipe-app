@@ -5,10 +5,13 @@ export interface RecipeType {
     description: string,
     imageURL: string,
     timeInMins: number,
-    ratings: [Number],
-    category: [String],
+    ratings: number[],
+    // ratings: [Number],
+    category: string,
+    // category: [String],
     ingredients: [{name: string, amount: number, unit: string}],
-    instructions: [String],
+    instructions: string[],
+    // instructions: [String],
     comments: any
 }
 
@@ -18,11 +21,11 @@ export interface RecipeType {
     unit: string
 } */
 
-export interface Comment {
+/* export interface Comment {
     comment: string,
     name: string,
     createdAt: Date
-}
+} */
 
 const schema = new Schema<RecipeType>({
     title: { type: String, required: true },
@@ -30,12 +33,14 @@ const schema = new Schema<RecipeType>({
     imageURL: { type: String, required: true },
     timeInMins: { type: Number, required: true },
     ratings: { type: [Number], required: true },
-    category: { type: [String], required: true },
+    category: { type: String, required: true },
+    // category: { type: [String], required: true },
     ingredients: { type: [Object], required: true },
     instructions: { type: [String], required: true },
     comments: { type: Array, required: true }
 })
 
-const RecipeModel = model<RecipeType>('Recipe', schema)
+const RecipeModel = model<RecipeType>('Recipe', schema, 'recipes')
+// const RecipeModel = model<RecipeType>('Recipe', schema)
 
-export default RecipeModel
+export default RecipeModel;
