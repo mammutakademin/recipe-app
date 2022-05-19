@@ -137,11 +137,11 @@ const Layout = () => {
             <Body>
             <h3>CATEGORIES</h3>
             <CategoryWrapper>
-                <p>Soup</p>            
-                <p>Pasta</p>            
-                <p>Pie</p>            
-                <p>Grytor</p>            
-                <p>Halloumi</p>            
+                <p>Grill</p>            
+                <p>Slow Cooker</p>            
+                <p>Pressure Cooker</p>            
+                <p>Air Fryer</p>            
+                <p>Oven</p>            
             </CategoryWrapper>
 
             <Wrapper>
