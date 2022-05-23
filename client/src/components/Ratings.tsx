@@ -25,7 +25,7 @@ const StyledStars = styled(ReactStars)`
 const starColor = '#ff0000';
 const emptyStarColor = '#ffffff'
 
-const Rating = ({ recipeRatings, recipeId, edit }: ratingProps) => {
+const Ratings = ({ recipeRatings, recipeId, edit }: ratingProps) => {
 
     const ratingChanged = async (newRating: any) => {
         console.log(newRating, recipeId)
@@ -44,4 +44,4 @@ const Rating = ({ recipeRatings, recipeId, edit }: ratingProps) => {
         />
     )
 }
-export default Rating
+export default Ratings

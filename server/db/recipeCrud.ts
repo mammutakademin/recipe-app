@@ -27,7 +27,7 @@ export const getCategories = async () => {
     return await RecipeModel.find().distinct('category')
 }
 
-export const getRecipesCategory = async (category: string) => {
+export const getRecipesByCategory = async (category: string) => {
     const recipes = await RecipeModel.find({'category': category})
     return recipes
 }

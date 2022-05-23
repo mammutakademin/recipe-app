@@ -1,6 +1,5 @@
 import express, {Request, Response} from 'express';
-import RecipeModel from '../db/models/recept';
-import {getRecipes, getRecipesBySearch, getRecipeById} from "../db/recipeCrud";
+import { getRecipes, getRecipesBySearch, getRecipeById } from "../db/recipeCrud";
 
 const recipeRouter = express.Router()
 
@@ -15,8 +14,8 @@ recipeRouter.get('/search/:query', async (req: Request, res: Response) => {
 });
 
 recipeRouter.get('/:recipeId', async (req: Request, res: Response) => {
-    const recipe = await getRecipeById(req.params.recipeId);
-    res.status(200).json(recipe);
+    const queriedRecipeById = await getRecipeById(req.params.recipeId);
+    res.status(200).json(queriedRecipeById);
 })
 
 /* recipeRouter.post('/', async (req: Request, res: Response) => {

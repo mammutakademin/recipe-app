@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import RecipeDetails from './RecipeDetails';
-import Nav from './Nav';
-// import Search from './Search';
+import CategoryList from './CategoryList';
+// import SearchRecipeViaCategory from './SearchRecipeViaCategory';
 import styled from 'styled-components';
 
 
@@ -59,6 +59,7 @@ const StyledRecipeList = styled.div`
        color: black;
        font-size: 1rem;
     }
+   
     `
 
 const RecipeList = () => {
@@ -66,9 +67,9 @@ const RecipeList = () => {
     const searchForRecipes = async (query: string) => {
         const recipes = await fetch(`http://localhost:3000/recipes?search=${query}`)
         .then(res => res.json())
-        setRecipes (recipes);
+        setRecipes(recipes);
     }
-    const [recipes, setRecipes] = useState<any>([]);
+    // const [ recipes, setRecipes ] = useState<any>([]);
     const fetchRecipes = async () => {
         const recipes = await fetch('http://localhost:3000/recipes')
         .then(res => res.json())
@@ -79,21 +80,25 @@ const RecipeList = () => {
         if(query) {
             searchForRecipes(query)
         }else {
-        fetchRecipes();
+            fetchRecipes();
         }
-        }, [query])
+    }, [query])
     return (
         <StyledRecipeList>
             <div className='container'>
-                <div className='recipes'>   
-                        {recipes.map((recipe: any) => <RecipeDetails key={recipe._id} recipe={recipe}></RecipeDetails> )}
-                </div> 
+                {/* <div className='recipes'>   
+                        {recipes.map((recipe: any) => 
+                            <RecipeDetails 
+                                key={recipe._id} 
+                                recipe={recipe}>
+                            </RecipeDetails> )}
+                </div>  */}
                 <div className='category'>
-                    <form >
+                    <form>
                         <input type="text" placeholder="Search Recipe" value={query} onChange={(e) => setQuery(e.target.value)} />
                     </form>
                     <h3>Categories</h3>
-                    <Nav/>
+                    <CategoryList/>
                 </div>
            </div>
         </StyledRecipeList>

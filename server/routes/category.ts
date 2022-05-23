@@ -1,5 +1,5 @@
-import express, {Request, Response} from 'express';
-import { getCategories, getRecipesCategory, getRecipesBySearchCategory } from "../db/recipeCrud";
+import express, { Request, Response } from 'express';
+import { getCategories, getRecipesByCategory, getRecipesBySearchCategory } from "../db/recipeCrud";
 
 const router = express.Router()
 
@@ -9,7 +9,7 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 router.get('/:category', async (req: Request, res: Response) => {
-    const queriedCategories = await getRecipesCategory(req.params.category);
+    const queriedCategories = await getRecipesByCategory(req.params.category);
     res.status(200).json(queriedCategories);
 });
 
