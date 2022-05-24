@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import RecipeDetails from './RecipeDetails';
+// import RecipeDetails from './RecipeDetails';
 import CategoryList from './CategoryList';
 // import SearchRecipeViaCategory from './SearchRecipeViaCategory';
 import styled from 'styled-components';
@@ -67,13 +67,13 @@ const RecipeList = () => {
     const searchForRecipes = async (query: string) => {
         const recipes = await fetch(`http://localhost:3000/recipes?search=${query}`)
         .then(res => res.json())
-        setRecipes(recipes);
+        setQuery(recipes);
     }
     // const [ recipes, setRecipes ] = useState<any>([]);
     const fetchRecipes = async () => {
         const recipes = await fetch('http://localhost:3000/recipes')
         .then(res => res.json())
-        setRecipes(recipes);
+        setQuery(recipes);
     }
 
     useEffect(() => {
@@ -83,6 +83,7 @@ const RecipeList = () => {
             fetchRecipes();
         }
     }, [query])
+    console.log("query", query)
     return (
         <StyledRecipeList>
             <div className='container'>

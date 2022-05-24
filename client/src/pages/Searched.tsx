@@ -7,6 +7,7 @@ import { NavLink} from 'react-router-dom';
 import NavHeader from '../components/NavHeader';
 import MainHeader from '../components/Header';
 import Categories from '../components/CategoryList';
+import StarRating from '../components/StarRating';
 
 const Card = styled.div`
 margin-bottom:5rem;
@@ -48,15 +49,13 @@ a{
     text-decoration:none;
 }
 `;
-// const CategoryWrapper = styled.div`
-// display:flex;
-// margin:2rem auto 5rem auto;
-// p{
-//     padding:1.3rem;
-//     font-size:24px;
-// }
+const Container = styled.div`
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+`
 
-// `;
 const Main = styled.main`
      /* border-top: 4px solid #e4910272; */
     display:flex;
@@ -108,34 +107,22 @@ const Searched=()=> {
                 return(
                     <NavLink to ={`/Recipe/${recipe._id}`}>
                          <Card key={recipe._id}>
-                            <img src={recipe.imageURL} width={200} alt=""/> 
-                            <div>
+                            <img src={recipe.imageURL} width={200} alt="search"/> 
+                            <section>
+                                <Container>
+                                    <StarRating />
+                                    <p>{recipe.timeInMins}min</p>
+                                </Container>
                                 <p>{recipe.title}</p>
-                                {/* <p>{recipe.timeInMins}min</p> */}
-                            </div>       
+                            </section>       
                         </Card>
                     </NavLink>    
                  );
-                 })}
-            </Wrapper>
-       {/* {searchedRecipe.map((recipe)=> { */}
-                {/* return( */}
-                    {/* <NavLink to ={`/Recipe/${recipe._id}`}> */}
-                         {/* <Card key={recipe._id}> */}
-                        {/* <img src={recipe.imageUrl} width={200} alt=""/>  */}
-                        {/* <div> */}
-                            {/* <p>{recipe.title}</p> */}
-                            {/* <p>{recipe.timeInMins}min</p> */}
-                        {/* </div>        */}
-                    {/* </Card> */}
-                        {/* </NavLink> */}
-                   
-                );
-            {/* })} */}
-            </Main>
+                })}
+    </Wrapper>
+</Main>
 
-        <h1>searched</h1>
-      </>
+</>
    
   )
   }

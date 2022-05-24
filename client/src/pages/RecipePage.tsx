@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import NavHeader from '../components/NavHeader';
 import { RecipeType } from '../types';
+// import { RecipeDetails } from '../components/RecipeDetails';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import StarRating from '../components/StarRating'

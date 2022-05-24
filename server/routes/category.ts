@@ -4,8 +4,8 @@ import { getCategories, getRecipesByCategory, getRecipesBySearchCategory } from 
 const router = express.Router()
 
 router.get('/', async (req: Request, res: Response) => {
-    const returnCategories = await getCategories();
-    res.status(200).json(returnCategories);
+    const recipes = await getCategories();
+    res.status(200).json(recipes);
 });
 
 router.get('/:category', async (req: Request, res: Response) => {
@@ -14,8 +14,8 @@ router.get('/:category', async (req: Request, res: Response) => {
 });
 
 router.get('/:categoryName/recipes', async (req: Request, res: Response) => {
-    const returnRecipes = await getRecipesBySearchCategory(req.params.categoryName);
-    res.status(200).json(returnRecipes);
+    const categoriesBySearch = await getRecipesBySearchCategory(req.params.categoryName);
+    res.status(200).json(categoriesBySearch);
 })
 
 export default router;

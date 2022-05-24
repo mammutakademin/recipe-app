@@ -7,18 +7,27 @@ import { NavLink } from 'react-router-dom';
 const Form = styled.form`
     position: absolute;
     z-index: 5;
+    div {
+        position: relative;
+    }
 `
 
 const Button = styled.button`
     z-index: 6;
+    display: none;
+    /* position: absolute; */
     svg {
         color: grey;
         width: 1.5rem;
         height: 1.5rem;
+        position: absolute;
+        right: 25px;
     }
 `
 
 const Input = styled.input`
+    flex-grow: 2;
+    position: relative;
     margin-top: 28rem;
     width: 30rem;
     padding: 1rem 2rem;

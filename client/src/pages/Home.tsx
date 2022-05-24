@@ -54,16 +54,10 @@ import MainHeader from '../components/Header';
 
 function Home() {
   return (<>
-  <NavHeader/>
-  <MainHeader/>
-     {/* <Header>
-         <Search/>
-         <h1>VEGETARISKA RECEPT</h1>
-         <p>En kort text om vegetarsisk mat eller nått. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, dicta! </p>
-        <img src="https://static.vecteezy.com/ti/gratis-foton/p2/2248291-halsosam-mat-gronsaker-och-frukter-pa-en-svart-betong-bakgrund-gratis-fotona.jpg" alt=""/>  
-     </Header> */}
-     <FetchRecipes/>
-     <Footer/>
+    <NavHeader/>
+    <MainHeader/>
+    <FetchRecipes/>
+    <Footer/>
   </>
   )
 }
