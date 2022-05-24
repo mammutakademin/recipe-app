@@ -21,10 +21,6 @@ const CategoryWrapper = styled.div`
     font-size: 24px;
   }
 `;
-// const CategoryStyle=styled.div`
-// width:100px;
-// background-color:blue;
-// `
 
 const LiStyle = styled.li`
 text-transform: uppercase;
@@ -32,8 +28,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 text-align: center;
-background-color: #178325;
-color: #fff;
+background-color: white;
+color: black;
 border-radius: 16px;
 padding: 0.5rem 1.5rem;
 cursor: pointer;
@@ -51,10 +47,13 @@ const Categories = () => {
 
   useEffect(() => {
     const loadCategory = async () => {
-      const res = await fetch("http://localhost:4000/category")
-      .then((data) => data.json());
-      console.log(res, res.data);
-      setCategory(res);
+      // const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/category`)
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/category`)
+      .then(response => response.json())
+      .then((data) => setCategory(data));
+      // .then((data) => data.json());
+      // console.log(res, res.data);
+      // setCategory(res);
     };
     loadCategory();
   }, []);
@@ -65,8 +64,8 @@ const Categories = () => {
       <CategoryWrapper>
         {categories.map((category: any) => {
           const recipeItem = (
-            <NavLink to={`/category/${category._id}`}>
-              <ul key={category}>
+            <NavLink to={`/category/${category._id}`} key={category}>
+              <ul>
                 <LiStyle>
                   <img src={category.imageURL} alt=""></img>
                   {category._id}<span>({category.count})</span>

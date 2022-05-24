@@ -25,7 +25,7 @@ import MainHeader from '../components/Header';
 
 //    }
 //    h1{
-//        font-family:kaushan script;
+//        font-family: 'Pacifico', cursive;
 //        position:absolute;
 //        color:white;
 //        z-index:5;

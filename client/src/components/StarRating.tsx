@@ -29,17 +29,6 @@ const StarRating = (props: any) => {
     const [ rating, setRating ] = useState<any>(null);
     const [ hover, setHover ] = useState<any>(null); 
   
-  
-    // const handler = (rating: any) => {
-    // fetch('http://localhost:4000/recipes'),{
-    //     metod:'POST',
-    //     headers: {"content-Type": "application/json"},
-    //     body:JSON.stringify(rating)
-    // }).then(() => {
-    //      console.log(rating)  
-    // })
-    // };
-    //   ted exempel
     // importera recept id prop från sidans förälder
 
     const handler = (rating: number, id: string) => {

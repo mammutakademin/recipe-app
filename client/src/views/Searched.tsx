@@ -1,9 +1,9 @@
 import React from 'react';
-import {useState, useEffect } from 'react'
-import {useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
-import {RecipeType} from '../types';
-import { NavLink} from 'react-router-dom';
+import { RecipeType } from '../types';
+import { NavLink } from 'react-router-dom';
 import NavHeader from '../components/NavHeader';
 import MainHeader from '../components/Header';
 import Categories from '../components/CategoryList';
@@ -15,7 +15,7 @@ text-align:center;
 background-color:white;
 color:#173825;
 font-size:20px;
-/* font-family:Roboto; */
+/* font-family: 'Quicksand', sans-serif; */
 width:17.5rem;
 height:25rem;
 box-sizing:border-box;

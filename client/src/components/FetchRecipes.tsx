@@ -13,7 +13,7 @@ const Card = styled.div`
   color: #173825;
   font-size: 23px;
   /* font-size: 20px; */
-  font-family: Roboto;
+  font-family: 'Pacifico', cursive;
   width: 24.5rem;
   /* width: 17.5rem; */
   height: 32rem;
@@ -96,7 +96,7 @@ const FetchRecipes = () => {
 
   useEffect(() => {
     const loadRecipes = async () => {
-      const res = await fetch("http://localhost:4000/recipes").then((data) =>
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/recipes`).then((data) =>
         data.json()
       );
       console.log(res, res.data);
@@ -110,26 +110,12 @@ const FetchRecipes = () => {
     <>
       <Main>
         <Categories />
-        {/* <h3>CATEGORIES</h3> */}
-
-        {/* <CategoryWrapper>
-          {<p>Appetizer</p>
-          <p>Soup</p>
-          <p>Grill</p>
-          <p>Pasta</p>
-          <p>Dessert</p>}
-        </CategoryWrapper> */}
-
-        <CategoryWrapper>
+          <CategoryWrapper>
           {recipes.map((recipe) => {
             return (
               <NavLink to={`/Recipe/${recipe._id}`}>
                 <Card key={recipe._id}>
                   <img src={recipe.imageURL} width={200} alt="recipe" />
-                  {/* <div>
-                    <p>{recipe.title}</p>
-                    {<p>{recipe.timeInMins}min</p>}
-                  </div> */}
                   <section>
                       <Container>
                           <StarRating />

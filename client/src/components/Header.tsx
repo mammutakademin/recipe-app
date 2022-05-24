@@ -19,7 +19,7 @@ const Header = styled.header`
 
    }
    h1 {
-       font-family:kaushan script;
+        font-family: 'Pacifico', cursive;
        position: absolute;
        color: white;
        z-index: 5;

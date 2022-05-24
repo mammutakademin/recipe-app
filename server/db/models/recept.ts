@@ -12,11 +12,11 @@ export interface RecipeType {
     comments: any
 }
 
-/* export interface Ingredients {
+export interface Ingredients {
     ingredient: string,
     amount: number,
     unit: string
-} */
+}
 
 export interface Comment {
     comment: string,
@@ -33,7 +33,8 @@ const schema = new Schema<RecipeType>({
     category: { type: [String], required: true },
     ingredients: { type: [Object], required: true },
     instructions: { type: [Object], required: true },
-    comments: { type: Array, required: true }
+    comments: { type: [Object], required: true }
+    // comments: { type: Array, required: true }
 })
 
 const RecipeModel = model<RecipeType>('Recipe', schema)

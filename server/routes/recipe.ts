@@ -1,5 +1,5 @@
 import express, {Request, Response} from 'express';
-import { getRecipes, getRecipesBySearch, getRecipeById } from "../db/recipeCrud";
+import { getRecipes, getRecipesBySearch, getRecipeById, postRatingOnRecipe } from "../db/recipeCrud";
 
 const recipeRouter = express.Router()
 
@@ -18,24 +18,9 @@ recipeRouter.get('/:recipeId', async (req: Request, res: Response) => {
     res.status(200).json(queriedRecipeById);
 })
 
-/* recipeRouter.post('/', async (req: Request, res: Response) => {
-    const postRecipe = new RecipeModel({
-        title: req.body.title,
-        description: req.body.description,
-        imageURL: req.body.imageURL,
-        timeInMins: req.body.timeInMins,
-        ratings: req.body.ratings,
-        category: req.body.category,
-        ingredients: req.body.ingredients,
-        instructions: req.body.instructions,
-        comments: req.body.comments
-    })
-    try {
-        const savePostedRecipe = await postRecipe.save();
-        res.json(savePostedRecipe);
-    }catch(err) {
-        res.json({message: err});
-    }
-}) */
+recipeRouter.post('/:recipeId/ratings', async (req: Request, res: Response) => {
+    const postedRating = await postRatingOnRecipe(req.params.recipeId, req.body.rating)
+    res.status(200).json(postedRating)
+})
 
 export default recipeRouter;

@@ -1,0 +1,114 @@
+import { useState, useEffect } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import { RecipeType } from '../types';
+import styled from 'styled-components';
+import NavHeader from '../components/NavHeader';
+import MainHeader from '../components/Header';
+import CategoryList from '../components/CategoryList';
+import StarRating from '../components/StarRating';
+
+const Main = styled.main`
+     /* border-top: 4px solid #e4910272; */
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    /* height:100vh; */
+    color: white;
+    padding: 1rem;
+    h3 {
+        font-size: 35px;
+        margin auto;
+        padding-top: 3rem;
+    }
+    `;
+
+const Container = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const Card = styled.div`
+    margin: 1rem;
+    background-color: white;
+    color: #9B5400;
+    font-size: 23px;
+    width: 24.5rem;
+    height: 32rem;
+    box-sizing: border-box;
+    box-shadow: 0 2px 3px 0 rbg(0 0 0 / 23%);
+    img {
+      width: 100%;
+      height: 70%;
+      object-fit: cover;
+    }
+    section {
+      padding: 1.5rem;
+      height: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    :hover {
+      opacity: 0.7;
+    }
+`;
+
+const Wrapper = styled.div`
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #F9F8F1;
+    max-width: 100%;
+    a {
+      text-decoration: none;
+    }
+`;
+
+const CategoryView = () => {
+  const { categories } = useParams()
+  const [ categoryRecipe, setCategoryRecipe] = useState<RecipeType[]>([]);
+
+  useEffect(() => {
+    const loadCategoryRecipe = async () => {
+      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/category/${categories}/recipes`)
+      .then(data => data.json())
+      console.log(categories)
+      setCategoryRecipe(res)
+    }
+    loadCategoryRecipe()
+  }, [categories])
+
+  return (
+      <>
+       <NavHeader/>
+       <MainHeader/>
+       <Main>
+            <CategoryList/>
+            <Wrapper>
+              {categoryRecipe.map((recipe) => {
+                return (
+                <NavLink to = {`/Recipe/${recipe._id}`}>
+                  <Card key={recipe._id}>
+                    <img src={recipe.imageURL} width={200} alt="recipe" />
+                    <section>
+                      <Container>
+                        <StarRating />
+                        <p>{recipe.timeInMins} min</p>
+                      </Container>
+                      <p>{recipe.title}</p>
+                    </section>
+                  </Card>
+                </NavLink>
+              );
+              })}
+            </Wrapper>
+      </Main>
+      </>
+  )
+}
+
+export default CategoryView

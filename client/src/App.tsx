@@ -5,18 +5,19 @@ import './App.css';
 // import Search from './components/Search'
 // import FetchRecipes from './components/FetchRecipes'
 // import Home from './pages/Home'
-import Pages from './pages/pages'
+import Pages from './views/pages'
 import { BrowserRouter} from 'react-router-dom';
 
 
-const App =()=> {
+const App = () => {
 
-  return(<>
-   <BrowserRouter> 
-  <Pages/>
-  </BrowserRouter> 
+  return (
+  <>
+    <BrowserRouter> 
+      <Pages/>
+    </BrowserRouter> 
   {/* <FetchRecipes/> */}
-  </>)
-  }
+  </>
+  )}
 
 export default App;
