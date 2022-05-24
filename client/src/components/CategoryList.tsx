@@ -47,13 +47,9 @@ const Categories = () => {
 
   useEffect(() => {
     const loadCategory = async () => {
-      // const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/category`)
       fetch(`${process.env.REACT_APP_API_BASE_URL}/category`)
       .then(response => response.json())
-      .then((data) => setCategory(data));
-      // .then((data) => data.json());
-      // console.log(res, res.data);
-      // setCategory(res);
+      .then(data => setCategory(data));
     };
     loadCategory();
   }, []);
@@ -67,10 +63,7 @@ const Categories = () => {
             <NavLink to={`/category/${category._id}`} key={category}>
               <ul>
                 <LiStyle>
-                  <img src={category.imageURL} alt=""></img>
                   {category._id}<span>({category.count})</span>
-                  {/* {category.title} */}
-                  {/* <span>({category.count})</span>{''} */}
                 </LiStyle>
               </ul>
             </NavLink>

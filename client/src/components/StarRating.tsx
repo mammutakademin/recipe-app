@@ -7,7 +7,7 @@ import styled from 'styled-components';
 // import {useParams} from 'react-router-dom';
 
 const Label = styled.label`
-   color:blue;
+   color: blue;
    svg {
        color: blue;
        cursor: pointer;
@@ -29,13 +29,11 @@ const StarRating = (props: any) => {
     const [ rating, setRating ] = useState<any>(null);
     const [ hover, setHover ] = useState<any>(null); 
   
-    // importera recept id prop från sidans förälder
-
     const handler = (rating: number, id: string) => {
-    fetch('http://localhost:4000/recipes', {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/recipes`, {
         method:'POST',
         headers: {"content-Type": "application/json"},
-        body:JSON.stringify({
+        body: JSON.stringify({
             ratings: rating,
             _id: id
         })
@@ -45,7 +43,7 @@ const StarRating = (props: any) => {
     };
 
     return (
-        <StarContainer>{[...Array(5)].map((star,i)=>{
+        <StarContainer>{[...Array(5)].map((star, i)=>{
             const ratingValue:any = i + 1;
             return  (
             <Label>

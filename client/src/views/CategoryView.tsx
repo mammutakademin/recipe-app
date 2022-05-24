@@ -8,11 +8,9 @@ import CategoryList from '../components/CategoryList';
 import StarRating from '../components/StarRating';
 
 const Main = styled.main`
-     /* border-top: 4px solid #e4910272; */
     display: flex;
     flex-direction: column;
     background-color: yellow;
-    /* height:100vh; */
     color: white;
     padding: 1rem;
     h3 {
@@ -69,18 +67,19 @@ const Wrapper = styled.div`
 `;
 
 const CategoryView = () => {
-  const { categories } = useParams()
+  const { categoryName } = useParams()
   const [ categoryRecipe, setCategoryRecipe] = useState<RecipeType[]>([]);
 
   useEffect(() => {
     const loadCategoryRecipe = async () => {
-      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/category/${categories}/recipes`)
-      .then(data => data.json())
-      console.log(categories)
-      setCategoryRecipe(res)
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/categories/${categoryName}/recipes`)
+      // fetch(`${process.env.REACT_APP_API_BASE_URL}/category/${categories}/recipes`)
+      .then(response => response.json())
+      .then(data => setCategoryRecipe(data))
+      // console.log(categoryName)
     }
     loadCategoryRecipe()
-  }, [categories])
+  }, [categoryName])
 
   return (
       <>

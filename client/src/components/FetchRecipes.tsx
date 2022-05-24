@@ -6,18 +6,13 @@ import Categories from "../components/CategoryList";
 import StarRating from "../components/StarRating";
 
 const Card = styled.div`
-  /* margin-bottom: 5rem; */
   margin: 1rem;
-  /* text-align: center; */
   background-color: white;
   color: #173825;
   font-size: 23px;
-  /* font-size: 20px; */
   font-family: 'Pacifico', cursive;
   width: 24.5rem;
-  /* width: 17.5rem; */
   height: 32rem;
-  /* height: 25rem; */
   box-sizing: border-box;
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 23%);
   img {
@@ -60,15 +55,6 @@ const CategoryWrapper = styled.div`
   }
 `;
 
-/* const CategoryWrapper = styled.div`
-  display: flex;
-  margin: 2rem auto 5rem auto;
-  p {
-    padding: 1.3rem;
-    font-size: 24px;
-  }
-`; */
-
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -77,11 +63,10 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
-  /* border-top: 4px solid #e4910272; */
+  border-top: 4px solid #f9f8f1;
   display: flex;
   flex-direction: column;
-  background-color: #f9f8f1;
-  /* height: 100vh; */
+  background-color: #e4910272;
   color: #173825;
   padding: 1rem;
   h3 {
@@ -96,11 +81,9 @@ const FetchRecipes = () => {
 
   useEffect(() => {
     const loadRecipes = async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/recipes`).then((data) =>
-        data.json()
-      );
-      console.log(res, res.data);
-      setRecipes(res);
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/recipes`)
+      .then(response => response.json())
+      .then((data) => setRecipes(data))
     };
 
     loadRecipes();
@@ -113,9 +96,9 @@ const FetchRecipes = () => {
           <CategoryWrapper>
           {recipes.map((recipe) => {
             return (
-              <NavLink to={`/Recipe/${recipe._id}`}>
-                <Card key={recipe._id}>
-                  <img src={recipe.imageURL} width={200} alt="recipe" />
+              <NavLink to={`/Recipe/${recipe._id}`} key={recipe._id}>
+                <Card>
+                  <img src={recipe.imageURL} width={200} height={300} alt="recipe" />
                   <section>
                       <Container>
                           <StarRating />
