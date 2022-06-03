@@ -22,25 +22,17 @@ const Card = styled.div`
   }
   section {
       padding: 1.5rem;
-      height: 25%;
+      height: 8rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
   }
-  /* div {
-    height: 8rem;
-    padding: 1.3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-decoration: none;
-  } */
   :hover {
     opacity: 0.7;
   }
 `;
 
-const CategoryWrapper = styled.div`
+const RecipeWrapper = styled.div`
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -93,10 +85,10 @@ const FetchRecipes = () => {
     <>
       <Main>
         <Categories />
-          <CategoryWrapper>
+          <RecipeWrapper>
           {recipes.map((recipe) => {
             return (
-              <NavLink to={`/Recipe/${recipe._id}`} key={recipe._id}>
+              <NavLink to={`/recipe/${recipe._id}`} key={recipe._id}>
                 <Card>
                   <img src={recipe.imageURL} width={200} height={300} alt="recipe" />
                   <section>
@@ -110,7 +102,7 @@ const FetchRecipes = () => {
               </NavLink>
             );
           })}
-        </CategoryWrapper>
+        </RecipeWrapper>
       </Main>
     </>
   );

@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactStars from 'react-stars'
 import styled from 'styled-components'
 import {postRating} from '../api/index'

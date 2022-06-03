@@ -40,7 +40,7 @@ const Search = ({inputText}: any) => {
         <Form>
             <div>
                 <Input type="text" placeholder="Search" onChange={(event) => setInput(event.target.value)}/>
-                <NavLink to={`/searched/${input}`}><Button><FaSearch /></Button></NavLink>
+                <NavLink to={`/searched/${input}`}><FaSearch></FaSearch><Button></Button></NavLink>
             </div>
         </Form>        
         </>     

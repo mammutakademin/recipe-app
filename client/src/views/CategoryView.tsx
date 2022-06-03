@@ -4,13 +4,13 @@ import { RecipeType } from '../types';
 import styled from 'styled-components';
 import NavHeader from '../components/NavHeader';
 import MainHeader from '../components/Header';
-import CategoryList from '../components/CategoryList';
+import Categories from '../components/CategoryList';
 import StarRating from '../components/StarRating';
 
 const Main = styled.main`
     display: flex;
     flex-direction: column;
-    background-color: yellow;
+    background-color: #F9F8F1;
     color: white;
     padding: 1rem;
     h3 {
@@ -86,7 +86,7 @@ const CategoryView = () => {
        <NavHeader/>
        <MainHeader/>
        <Main>
-            <CategoryList/>
+            <Categories/>
             <Wrapper>
               {categoryRecipe.map((recipe) => {
                 return (
