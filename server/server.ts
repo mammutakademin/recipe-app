@@ -7,7 +7,7 @@ import recipeRouter from  './routes/recipe';
 import categoryRouter from './routes/category'
 
 dotenv.config()
-// kE1u6b87IhX0ioVx
+
 const url = "mongodb+srv://EdithaITHS:kE1u6b87IhX0ioVx@receptsajten.ap0c6.mongodb.net/?retryWrites=true&w=majority";
 
 connect(url)
