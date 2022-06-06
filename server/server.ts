@@ -8,9 +8,7 @@ import categoryRouter from './routes/category'
 
 dotenv.config()
 
-const url = "mongodb+srv://EdithaITHS:kE1u6b87IhX0ioVx@receptsajten.ap0c6.mongodb.net/?retryWrites=true&w=majority";
-
-connect(url)
+connect(`${process.env.MONGO_DB_CONNECTION_STRING}`)
     .then( () => {
         console.log('Connected to the database ')
     })
