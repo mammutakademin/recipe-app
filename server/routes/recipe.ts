@@ -3,6 +3,7 @@ import { getRecipes, getRecipesBySearch, getRecipeById, postRatingOnRecipe } fro
 
 const recipeRouter = express.Router()
 
+// recipeRouter.get('/recipes', async (req: Request, res: Response) => {
 recipeRouter.get('/', async (req: Request, res: Response) => {
     const returnRecipes = await getRecipes();
     res.status(200).json(returnRecipes);

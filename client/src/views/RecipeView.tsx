@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components';
 import NavHeader from '../components/NavHeader';
 import { RecipeType } from '../types';
