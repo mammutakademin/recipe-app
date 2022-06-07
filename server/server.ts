@@ -18,7 +18,8 @@ connect(`${process.env.MONGO_DB_CONNECTION_STRING}`)
 // connect('mongodb://localhost:27017/receptsajten')
 const app = express()
 app.use(json());
-app.use(cors({origin: "http://localhost:3000"}));
+app.use(cors());
+// app.use(cors({origin: "http://localhost:3000"}));
 const port = process.env.PORT || 4000
 
 app.get('/', (req: Request, res: Response) => {
