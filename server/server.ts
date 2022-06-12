@@ -29,6 +29,8 @@ app.get('/', (req: Request, res: Response) => {
 //routes
 app.use('/recipes', recipeRouter);
 app.use('/category', categoryRouter);
+// app.use('/:id', recipeRouter);
+// app.use('/ratings', recipeRouter);
 
 app.listen(port, () => {
 console.log(`Example app listening on port ${port}`)

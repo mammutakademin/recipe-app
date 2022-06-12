@@ -10,7 +10,8 @@ import StarRating from '../components/StarRating';
 const Main = styled.main`
     display: flex;
     flex-direction: column;
-    background-color: #F9F8F1;
+    background-color: #173825;
+    /* background-color: #F9F8F1; */
     color: white;
     padding: 1rem;
     h3 {
@@ -68,12 +69,12 @@ const Wrapper = styled.div`
 
 const CategoryView = () => {
   const { categoryName } = useParams()
-  const [ categoryRecipe, setCategoryRecipe] = useState<RecipeType[]>([]);
+  const [ categoryRecipe, setCategoryRecipe ] = useState<RecipeType[]>([]);
 
   useEffect(() => {
     const loadCategoryRecipe = async () => {
-      fetch(`${process.env.REACT_APP_API_BASE_URL}/categories/${categoryName}/recipes`)
-      // fetch(`${process.env.REACT_APP_API_BASE_URL}/category/${categories}/recipes`)
+      /* fetch(`${process.env.REACT_APP_API_BASE_URL}/categories/${categoryName}/recipes`) */
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/category/${categoryName}/recipes`)
       .then(response => response.json())
       .then(data => setCategoryRecipe(data))
       // console.log(categoryName)
@@ -90,7 +91,8 @@ const CategoryView = () => {
             <Wrapper>
               {categoryRecipe.map((recipe) => {
                 return (
-                <NavLink to = {`/Recipe/${recipe._id}`}>
+                <NavLink to = {`/recipes/${recipe._id}`}>
+                {/* <NavLink to = {`/Recipe/${recipe._id}`}> */}
                   <Card key={recipe._id}>
                     <img src={recipe.imageURL} width={200} alt="recipe" />
                     <section>

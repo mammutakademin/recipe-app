@@ -23,23 +23,24 @@ const CategoryWrapper = styled.div`
 `;
 
 const LiStyle = styled.li`
-text-transform: uppercase;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-background-color: white;
-color: black;
-border-radius: 16px;
-padding: 0.5rem 1.5rem;
-cursor: pointer;
-box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 6%);
-span {
-  padding-left: 0.4rem;
-}
-:hover {
-  background-color: #173825;
-}
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  color: black;
+  border-radius: 16px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 6%);
+  span {
+    padding-left: 0.4rem;
+  }
+  :hover {
+    background-color: #173825;
+    color: white;
+  }
 `
 
 const Categories = () => {
@@ -59,7 +60,7 @@ const Categories = () => {
       <h3>CATEGORIES</h3>
       <CategoryWrapper>
         {categories.map((category: any) => {
-          const recipeItem = (
+          /* const recipeItem = (
             <NavLink to={`/category/${category._id}`} key={category}>
               <ul>
                 <LiStyle>
@@ -68,7 +69,16 @@ const Categories = () => {
               </ul>
             </NavLink>
           );
-          return recipeItem;
+          return recipeItem; */
+
+          const CategoryItem = (
+            <NavLink to = {`/category/${category._id}`}>
+              <ul key = {category}>
+                <LiStyle>{category._id}<span>({category.count})</span></LiStyle>
+              </ul>
+            </NavLink>
+          );
+          return CategoryItem;
         })}
       </CategoryWrapper>
     </>

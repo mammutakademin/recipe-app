@@ -35,13 +35,14 @@ const Card = styled.div`
 const RecipeWrapper = styled.div`
   margin: auto;
   display: flex;
+  /* justify-content: center; */
   justify-content: space-between;
   /* justify-content: space-around; */
   align-items: center;
   flex-wrap: wrap;
   background-color: #f9f8f1;
-  max-width: 100%;
-  /* width: 90%; */
+  /* max-width: 100%; */
+  width: 90%;
   a {
     text-decoration: none;
   }
@@ -58,7 +59,8 @@ const Main = styled.main`
   border-top: 4px solid #f9f8f1;
   display: flex;
   flex-direction: column;
-  background-color: #e4910272;
+  background-color: #E49172;
+  /* background-color: rgb(200, 118, 0); */
   color: #173825;
   padding: 1rem;
   h3 {
@@ -88,7 +90,7 @@ const FetchRecipes = () => {
           <RecipeWrapper>
           {recipes.map((recipe) => {
             return (
-              <NavLink to={`/recipe/${recipe._id}`} key={recipe._id}>
+              <NavLink to={`/recipes/${recipe._id}`} key={recipe._id}>
                 <Card>
                   <img src={recipe.imageURL} width={200} height={300} alt="recipe" />
                   <section>

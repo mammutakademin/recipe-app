@@ -120,15 +120,15 @@ ul {
 const RecipeView = () => {
 
     const params = useParams()
-
     const [recipe, setRecipe] = useState<RecipeType>();
     // const [rating, setRating] = useState(0)
 
     useEffect(() => {
+        console.log('Recipe view is running with id', params.id)
         const loadRecipe = async () => {
             fetch(`${process.env.REACT_APP_API_BASE_URL}/recipes/${params.id}`)
             .then(response => response.json())
-            .then(data => setRecipe(data[0]))
+            .then(data => setRecipe(data))
         }
         loadRecipe();
     }, [params.id])
@@ -144,7 +144,7 @@ const RecipeView = () => {
                     <img src={ recipe.imageURL } alt="recipe" />
                     <RecipeContent>
                         <h1>{ recipe.title }</h1>
-                        <StarRating/>
+                        <StarRating id={params.id} ratingprop={recipe.ratings}/>
                         <div>
                             <FaClock />
                             <p>{ recipe.timeInMins }min</p>
