@@ -1,6 +1,7 @@
 import axios from 'axios';
 axios.defaults.baseURL = `${process.env.REACT_APP_API_BASE_URL}`;
 
+// recipes
 export async function fetchRecipes() {
     try {
         const response = await axios.get('/recipes');
@@ -28,6 +29,7 @@ export async function fetchRecipeById(id: string) {
     }
 }
 
+// categories
 export async function fetchCategories() {
     try {
         const response = await axios.get('/category')
@@ -39,8 +41,8 @@ export async function fetchCategories() {
 
 export async function fetchRecipesByCategory(category: string) {
     try {
-        const response = await axios.get(`/category/${category}`)
-        // const response = await axios.get(`/categories/${category}/recipes`)
+        // const response = await axios.get(`/category/${category}`)
+        const response = await axios.get(`/category/${category}/recipes`)
         return response
     } catch (error: any) {
         return error.response
@@ -56,18 +58,18 @@ export async function fetchRecipesByCategoryAndQuery(category: string, query: st
     }
 }
 
-export async function postRating(id: string, rating: number) {
+export async function postRating(recipeId: string, rating: number) {
     try {
-        const response = await axios.post(`/recipes/${id}/ratings`, {rating: rating})
+        const response = await axios.post(`/recipes/${recipeId}/ratings`, {ratings: rating})
         return response
     } catch (error: any) {
         return error.response
     }
 }
 
-export async function postComment(id: string, comment: object) {
+export async function postComment(recipeId: string, comment: object) {
     try {
-        const response = await axios.post(`/recipes/${id}/comment`, {comment: comment})
+        const response = await axios.post(`/recipes/${recipeId}/comment`, {comments: comment})
         return response
     } catch (error: any) {
         return error.response

@@ -1,12 +1,12 @@
 import express, { Request, Response } from 'express';
-import { getCategories, getRecipesByCategory, getRecipesBySearchCategory } from "../db/categoryCRUD";
+import { getCategories, getRecipesByCategory, getRecipesBySearchCategory } from "../db/categoryCrud";
 
 const router = express.Router()
 
 /* router.get('/category', async (req: Request, res: Response) => { */
 router.get('/', async (req: Request, res: Response) => {
-    const recipes = await getCategories();
-    res.status(200).json(recipes);
+    const categories = await getCategories();
+    res.status(200).json(categories);
 });
 
 router.get('/:category', async (req: Request, res: Response) => {
@@ -15,8 +15,8 @@ router.get('/:category', async (req: Request, res: Response) => {
     res.status(200).json(queriedCategories);
 });
 
-router.get('/:categoryName/recipes', async (req: Request, res: Response) => {
-    const categoriesBySearch = await getRecipesBySearchCategory(req.params.categoryName);
+router.get('/:category/recipes', async (req: Request, res: Response) => {
+    const categoriesBySearch = await getRecipesBySearchCategory(req.params.category, req.query.search);
     res.status(200).json(categoriesBySearch);
 })
 

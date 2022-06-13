@@ -44,15 +44,15 @@ const LiStyle = styled.li`
 `
 
 const Categories = () => {
-  const [ categories, setCategory ] = useState<RecipeType[]>([]);
+  const [ categories, setCategories ] = useState<RecipeType[]>([]);
 
   useEffect(() => {
-    const loadCategory = async () => {
+    const loadCategories = async () => {
       fetch(`${process.env.REACT_APP_API_BASE_URL}/category`)
       .then(response => response.json())
-      .then(data => setCategory(data));
+      .then(data => setCategories(data));
     };
-    loadCategory();
+    loadCategories();
   }, []);
 
   return (

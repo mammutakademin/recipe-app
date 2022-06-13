@@ -1,5 +1,4 @@
 import RecipeModel from "./models/recept";
-// import RecipeModel, { RecipeType } from "./models/recept";
 
 export const getRecipes = async () => {
     const recipes = await RecipeModel.find();
@@ -8,9 +7,7 @@ export const getRecipes = async () => {
 
 export const getRecipeById = async (recipeId: string) => {
     const recipes = await RecipeModel.findById({_id: recipeId});
-    // const recipes = await RecipeModel.find({_id: recipeId});
     return recipes;
-    // return await RecipeModel.find({"title" :{ '$regex' : recipeId.search, '$options' : "i"}});
 }
 
 export const getRecipesBySearch = async (title: string) => {
@@ -19,6 +16,7 @@ export const getRecipesBySearch = async (title: string) => {
     })
     return foundRecipes;
 }
+
 
 // export const postRatingOnRecipe = async (_id: string, rating: number) => {
 //     const recipe = await RecipeModel.findById(_id)
@@ -31,9 +29,9 @@ export const getRecipesBySearch = async (title: string) => {
 //         }
 // }
 
-export const postRatingOnRecipe = async (id: string, rating: number) => {
+export const postRatingOnRecipe = async (recipeId: string, rating: number) => {
     const recipe = await RecipeModel.findOneAndUpdate(
-        { _id: id },
+        { _id: recipeId },
         { $push: { ratings: rating } }
     )
 }
