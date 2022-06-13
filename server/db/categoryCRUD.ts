@@ -13,7 +13,7 @@ export const getCategories = async () => {
 export const getRecipesByCategory = async (category: string) => {
     const recipes = await RecipeModel.find({category: category})
     console.log('Fetch Recipes by Category', recipes);
-    return recipes
+    return recipes;
 }
 
 // export const getRecipesBySearchCategory = async (category: string) => {
@@ -28,5 +28,5 @@ export const getRecipesBySearchCategory = async (params: string, search: any) =>
         category: params,
         title: {$regex: search, $options: 'i'}
     });
-    return recipes
+    return recipes;
 }
