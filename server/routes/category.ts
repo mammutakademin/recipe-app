@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { getCategories, getRecipesByCategory, getRecipesBySearchCategory } from "../db/categoryCrud";
+import { getCategories, getRecipesByCategory, getRecipesBySearchCategory } from "../db/recipeCrud";
 
 const router = express.Router()
 
