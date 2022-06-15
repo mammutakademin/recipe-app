@@ -9,7 +9,7 @@ const Form = styled.form`
     div {
         position: relative;
     }
-`
+`;
 
 const Button = styled.button`
     z-index: 6;
@@ -39,8 +39,11 @@ const Search = ({inputText}: any) => {
         <>
         <Form>
             <div>
-                <Input type="text" placeholder="Search" onChange={(event) => setInput(event.target.value)}/>
-                <NavLink to={`/searched/${input}`}><FaSearch></FaSearch><Button></Button></NavLink>
+                <Input type="text" placeholder="Search" onChange={(event) => setInput(event.target.value)} />
+                <NavLink to={`/searched/${input}`}>
+                    <FaSearch></FaSearch>
+                    <Button></Button>
+                </NavLink>
             </div>
         </Form>        
         </>     

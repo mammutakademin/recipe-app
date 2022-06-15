@@ -28,25 +28,25 @@ export const getCategories = async () => {
 }
 
 export const getRecipesByCategory = async (category: string) => {
-    const recipes = await RecipeModel.find({category: category})
+    const recipes = await RecipeModel.find({"category": category})
     console.log('Fetch Recipes by Category', recipes);
     return recipes;
 }
 
-// export const getRecipesBySearchCategory = async (category: string) => {
-//     const recipes = await RecipeModel.find({
-//         category: {$regex: category, $options: 'i'}
-//     })
-//     return recipes
-// }
-
-export const getRecipesBySearchCategory = async (params: string, search: any) => {
+export const getRecipesBySearchCategory = async (category: string) => {
     const recipes = await RecipeModel.find({
-        category: params,
-        title: {$regex: search, $options: 'i'}
-    });
-    return recipes;
+        category: {$regex: category, $options: 'i'}
+    })
+    return recipes
 }
+
+// export const getRecipesBySearchCategory = async (params: string, search: any) => {
+//     const recipes = await RecipeModel.find({
+//         category: params,
+//         title: {$regex: search, $options: 'i'}
+//     });
+//     return recipes;
+// }
 
 // export const postRatingOnRecipe = async (_id: string, rating: number) => {
 //     const recipe = await RecipeModel.findById(_id)

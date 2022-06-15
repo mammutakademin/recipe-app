@@ -68,19 +68,17 @@ const Wrapper = styled.div`
 `;
 
 const CategoryView = () => {
-  const { categoryName } = useParams()
+  const { categories } = useParams()
   const [ categoryRecipe, setCategoryRecipe ] = useState<RecipeType[]>([]);
 
   useEffect(() => {
     const loadCategoryRecipe = async () => {
-      /* fetch(`${process.env.REACT_APP_API_BASE_URL}/categories/${categoryName}/recipes`) */
-      fetch(`${process.env.REACT_APP_API_BASE_URL}/category/${categoryName}/recipes`)
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/category/${categories}`)
       .then(response => response.json())
       .then(data => setCategoryRecipe(data))
-      // console.log(categoryName)
     }
     loadCategoryRecipe()
-  }, [categoryName])
+  }, [categories]);
 
   return (
       <>
@@ -91,8 +89,7 @@ const CategoryView = () => {
             <Wrapper>
               {categoryRecipe.map((recipe) => {
                 return (
-                <NavLink to = {`/recipes/${recipe._id}`}>
-                {/* <NavLink to = {`/Recipe/${recipe._id}`}> */}
+                <NavLink to = {`/recipe/${recipe._id}`}>
                   <Card key={recipe._id}>
                     <img src={recipe.imageURL} width={200} alt="recipe" />
                     <section>

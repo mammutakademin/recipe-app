@@ -60,17 +60,6 @@ const Categories = () => {
       <h3>CATEGORIES</h3>
       <CategoryWrapper>
         {categories.map((category: any) => {
-          /* const recipeItem = (
-            <NavLink to={`/category/${category._id}`} key={category}>
-              <ul>
-                <LiStyle>
-                  {category._id}<span>({category.count})</span>
-                </LiStyle>
-              </ul>
-            </NavLink>
-          );
-          return recipeItem; */
-
           const CategoryItem = (
             <NavLink to = {`/category/${category._id}`}>
               <ul key = {category}>
