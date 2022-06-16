@@ -33,20 +33,20 @@ export const getRecipesByCategory = async (category: string) => {
     return recipes;
 }
 
-export const getRecipesBySearchCategory = async (category: string) => {
-    const recipes = await RecipeModel.find({
-        category: {$regex: category, $options: 'i'}
-    })
-    return recipes
-}
-
-// export const getRecipesBySearchCategory = async (params: string, search: any) => {
+// export const getRecipesBySearchCategory = async (category: string) => {
 //     const recipes = await RecipeModel.find({
-//         category: params,
-//         title: {$regex: search, $options: 'i'}
-//     });
-//     return recipes;
+//         category: {$regex: category, $options: 'i'}
+//     })
+//     return recipes
 // }
+
+export const getRecipesBySearchCategory = async (params: string, search: any) => {
+    const recipes = await RecipeModel.find({
+        category: params,
+        title: {$regex: search, $options: 'i'}
+    });
+    return recipes;
+}
 
 // export const postRatingOnRecipe = async (_id: string, rating: number) => {
 //     const recipe = await RecipeModel.findById(_id)
@@ -65,3 +65,8 @@ export const postRatingOnRecipe = async (recipeId: string, rating: number) => {
         { $push: { ratings: rating } }
     )
 }
+
+export const getCommentsOnRecipe = async (recipeId: string) => {
+    const comments = await RecipeModel.find({_id: recipeId}, {comments:true, _id:false})
+    return comments
+  }

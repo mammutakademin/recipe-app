@@ -76,7 +76,7 @@ const Searched = () => {
       const res = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/recipes/search/${searched}`
       ).then((data) => data.json());
-      console.log(res, res.data);
+      console.log('Searched recipes', res, res.data);
       setSearchedRecipe(res);
     };
 
@@ -93,7 +93,7 @@ const Searched = () => {
           {searchedRecipe.map((recipe) => {
             return (
               <NavLink to={`/recipes/${recipe._id}`} key={recipe._id}>
-              {/* <NavLink to={`/Recipe/${recipe._id}`}> */}
+              {/* <NavLink to={`/recipes/${recipe._id}`}> */}
                 <Card>
                 {/* <Card key={recipe._id}> */}
                   <img src={recipe.imageURL} width={200} alt="recipe" />
@@ -107,7 +107,7 @@ const Searched = () => {
                 </Card>
               </NavLink>
             );
-          })}
+          })};
         </Wrapper>
       </Main>
     </>

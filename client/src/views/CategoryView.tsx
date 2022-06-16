@@ -89,7 +89,7 @@ const CategoryView = () => {
             <Wrapper>
               {categoryRecipe.map((recipe) => {
                 return (
-                <NavLink to = {`/recipe/${recipe._id}`}>
+                <NavLink to = {`/recipes/${recipe._id}`}>
                   <Card key={recipe._id}>
                     <img src={recipe.imageURL} width={200} alt="recipe" />
                     <section>
