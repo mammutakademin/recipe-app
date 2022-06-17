@@ -94,11 +94,10 @@ const FetchRecipes = () => {
                 <Card>
                   <img src={recipe.imageURL} width={200} height={300} alt="recipe" />
                   <section>
-                      <Container>
-                          <StarRating />
-                          <p>{recipe.timeInMins} min</p>
-                      </Container>
+                      <StarRating />
+                      <Container />
                       <p>{recipe.title}</p>
+                      <p>{recipe.ingredients.length} ingredients | {recipe.timeInMins} minutes</p>
                   </section>
                 </Card>
               </NavLink>
