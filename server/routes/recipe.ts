@@ -20,7 +20,7 @@ recipeRouter.get('/:recipeId', async (req: Request, res: Response) => {
 })
 
 recipeRouter.post('/:recipeId/ratings', async (req: Request, res: Response) => {
-    const postedRating = await postRatingOnRecipe(req.params.recipeId, req.body.rating)
+    const postedRating = await postRatingOnRecipe(req.params.recipeId, req.body.ratings)
     res.status(200).json(postedRating)
 })
 

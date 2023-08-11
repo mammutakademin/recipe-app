@@ -1,6 +1,6 @@
 import ReactStars from 'react-stars'
 import styled from 'styled-components'
-import {postRating} from '../api/index'
+import {postRatingOnRecipe} from '../api/index'
 
 interface ratingProps {
     recipeRatings: number[]
@@ -10,6 +10,13 @@ interface ratingProps {
 // const ratingChanged = ({newRating}: any) => {
 //   console.log(newRating)
 // }
+
+const starColor = '#f9e471';
+const emptyStarColor = '#c7cccf';
+// const StyledRating = styled(ReactStars)`
+//   display: flex;
+//   justify-content: center;
+// `;
 
 const calculateAverage = (rating: any) => {
     const middleValue = rating.reduce((a: number, b: number) => a + b);
@@ -21,14 +28,11 @@ const StyledStars = styled(ReactStars)`
     justify-content: center;
 `
 
-const starColor = '#ff0000';
-const emptyStarColor = '#ffffff'
-
 const Ratings = ({ recipeRatings, recipeId, edit }: ratingProps) => {
 
     const ratingChanged = async (newRating: any) => {
         console.log(newRating, recipeId)
-        await postRating(recipeId, newRating);
+        await postRatingOnRecipe(recipeId, newRating);
     }
     return (
         <StyledStars

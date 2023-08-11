@@ -58,7 +58,7 @@ export async function fetchRecipesByCategoryAndQuery(category: string, query: st
     }
 }
 
-export async function postRating(recipeId: string, rating: number) {
+export async function postRatingOnRecipe(recipeId: string, rating: number) {
     try {
         const response = await axios.post(`/recipes/${recipeId}/ratings`, {ratings: rating})
         return response
