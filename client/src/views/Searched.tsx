@@ -93,9 +93,7 @@ const Searched = () => {
           {searchedRecipe.map((recipe) => {
             return (
               <NavLink to={`/recipes/${recipe._id}`} key={recipe._id}>
-              {/* <NavLink to={`/recipes/${recipe._id}`}> */}
                 <Card>
-                {/* <Card key={recipe._id}> */}
                   <img src={recipe.imageURL} width={200} alt="recipe" />
                   <section>
                     <Container>

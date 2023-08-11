@@ -14,13 +14,13 @@ const Form = styled.form`
 const Button = styled.button`
     z-index: 6;
     display: none;
-    svg {
+    /* svg {
         color: grey;
         width: 1.5rem;
         height: 1.5rem;
         position: absolute;
         right: 25px;
-    }
+    } */
 `;
 
 const Input = styled.input`
@@ -33,6 +33,10 @@ const Input = styled.input`
     font-size: 18px;
 `;
 
+const StyledFaSearch = styled(FaSearch)`
+    color: #777;
+`
+
 const Search = ({inputText}: any) => {
     const [ input, setInput ] = useState("")
     return (
@@ -41,7 +45,7 @@ const Search = ({inputText}: any) => {
             <div>
                 <Input type="text" placeholder="Search" onChange={(event) => setInput(event.target.value)} />
                 <NavLink to={`/searched/${input}`}>
-                    <FaSearch></FaSearch>
+                    <StyledFaSearch></StyledFaSearch>
                     <Button></Button>
                 </NavLink>
             </div>

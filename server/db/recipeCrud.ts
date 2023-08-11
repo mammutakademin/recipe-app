@@ -33,13 +33,6 @@ export const getRecipesByCategory = async (category: string) => {
     return recipes;
 }
 
-// export const getRecipesBySearchCategory = async (category: string) => {
-//     const recipes = await RecipeModel.find({
-//         category: {$regex: category, $options: 'i'}
-//     })
-//     return recipes
-// }
-
 export const getRecipesBySearchCategory = async (params: string, search: any) => {
     const recipes = await RecipeModel.find({
         category: params,

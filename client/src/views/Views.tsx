@@ -10,9 +10,7 @@ function Views() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<RecipeView />} />
-        {/* <Route path="/Recipe" element={<RecipeView />} /> */}
         <Route path="/recipes/:id" element={<RecipeView />} />
-        {/* <Route path="/Recipe/:id" element={<RecipeView />} /> */}
         <Route path="/category/:categories" element={<CategoryView />} />
         <Route path="/searched/:searched" element={<Searched />} />
       </Routes>
